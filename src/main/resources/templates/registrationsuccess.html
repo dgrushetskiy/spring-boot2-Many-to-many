@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registration Confirmation Page</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/app.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="generic-container">
+    <div class="alert alert-success lead">
+        <h1 th:text="${success}"></h1>
+    </div>
+
+    <span class="well floatRight">
+		Go to <a th:href="@{/list}">Users List</a>
+	</span>
+</div>
+</body>
+</html>

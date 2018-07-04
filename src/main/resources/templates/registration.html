@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>User Registration Form</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/app.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="generic-container">
+    <div class="well lead">User Registration Form</div>
+    <form th:action="@{/newuser}" method="post" th:object="${user}" class="form-horizontal">
+        <input type="hidden" th:field="*{id}" path="id" id="id"/>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="firstName">First Name</label>
+                <div class="col-md-7">
+                    <input type="text"  th:field="*{firstName}" path="firstName" id="firstName" class="form-control input-sm" />
+                    <div class="has-error">
+                        <errors path="firstName" class="help-inline"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="lastName">Last Name</label>
+                <div class="col-md-7">
+                    <input type="text" th:field="*{lastName}" path="lastName" id="lastName" class="form-control input-sm" />
+                    <div class="has-error">
+                        <errors path="lastName" class="help-inline"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="ssoId">SSO ID</label>
+                <div class="col-md-7">
+
+                            <input type="text" th:field="*{ssoId}" path="ssoId" id="ssoId" class="form-control input-sm" disabled="true"/>
+
+                            <input type="text" th:field="*{ssoId}" path="ssoId" id="ssoId" class="form-control input-sm" />
+                            <div class="has-error">
+                                <errors path="ssoId" class="help-inline"/>
+                            </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="password">Password</label>
+                <div class="col-md-7">
+                    <input type="password" th:field="*{password}" path="password" id="password" class="form-control input-sm" />
+                    <div class="has-error">
+                        <errors path="password" class="help-inline"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="email">Email</label>
+                <div class="col-md-7">
+                    <input type="text" th:field="*{email}" path="email" id="email" class="form-control input-sm" />
+                    <div class="has-error">
+                        <errors path="email" class="help-inline"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12" >
+                <label class="col-md-3 control-lable" th:field="*{userProfiles}" >Roles</label>
+                <div class="col-md-7">
+                    <select th:field="*{userProfiles}">
+                        <option th:each="userProfiles : ${roles}" th:value="${userProfiles.id}" th:text="${userProfiles.type}" path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm"></option>
+                    </select>
+                    <div class="has-error">
+                        <errors path="userProfiles" class="help-inline"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-actions floatRight">
+
+                        <!--<input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a th:href="@{/list}">Cancel</a>-->
+
+                        <input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a th:href="@{/list}">Cancel</a>
+
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

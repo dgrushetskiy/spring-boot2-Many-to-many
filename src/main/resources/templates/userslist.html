@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users List</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/app.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="generic-container">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">List of Users </span></div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>SSO ID</th>
+                <th width="100"></th>
+                <th width="100"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.ssoId}"></td>
+                    <td><a th:href="@{'/edit-user-'+${user.ssoId}}" class="btn btn-success custom-width">edit</a></td>
+                    <td><a th:href="@{'/delete-user-'+${user.ssoId}}" class="btn btn-danger custom-width">delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="well">
+        <a th:href="@{/newuser}">Add New User</a>
+    </div>
+</div>
+</body>
+</html>
